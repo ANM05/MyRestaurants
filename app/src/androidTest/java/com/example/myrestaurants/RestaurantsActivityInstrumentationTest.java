@@ -20,15 +20,15 @@ public class RestaurantsActivityInstrumentationTest {
     @Rule
     public ActivityTestRule<RestaurantsActivity> activityTestRule =
             new ActivityTestRule<>(RestaurantsActivity.class);
-    @Test
-    public void listItemClickDisplaysToastWithCorrectRestaurant() {
-        View activityDecorView = activityTestRule.getActivity().getWindow().getDecorView();
-        String restaurantName = "Mi Mero Mole";
-        onData(anything())
-                .inAdapterView(withId(R.id.listView))
-                .atPosition(0)
-                .perform(click());
-        onView(withText(restaurantName)).inRoot(withDecorView(not(activityDecorView)))
-                .check(matches(withText(restaurantName)));
-    }
+//    @Test
+//    public void listItemClickDisplaysToastWithCorrectRestaurant() {
+//        View activityDecorView = activityTestRule.getActivity().getWindow().getDecorView();
+//        String restaurantName = "Mi Mero Mole";
+//        onData(anything())
+//                .inAdapterView(withId(R.id.listView))
+//                .atPosition(0)
+//                .perform(click());
+//        onView(withText(restaurantName)).inRoot(withDecorView(not(activityDecorView)))
+//                .check(matches(withText(restaurantName)));
+//    }
 }
