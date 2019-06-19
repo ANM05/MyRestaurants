@@ -5,10 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 
 import com.example.myrestaurants.adapters.RestaurantListAdapter;
@@ -25,9 +21,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class RestaurantsActivity extends AppCompatActivity {
-//    @BindView(R.id.locationTextView) TextView mLocationTextView;
-//    @BindView (R.id.listView) ListView mListView;
+public class RestaurantListActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -35,7 +29,7 @@ public class RestaurantsActivity extends AppCompatActivity {
 
     //private String[] restaurants = new String[] {"Sweet Hereafter", "Cricket", "Hawthorne Fish House", "Viking Soul Food", "Red Square", "Horse Brass", "Dick's Kitchen", "Taco Bell", "Me Kha Noodle Bar", "La Bonita Taqueria", "Smokehouse Tavern", "Pembiche", "Kay's Bar", "Gnarly Grey", "Slappy Cakes", "Mi Mero Mole" };
     //private String[] cuisines = new String[] {"Vegan Food", "Breakfast", "Fishs Dishs", "Scandinavian", "Coffee", "English Food", "Burgers", "Fast Food", "Noodle Soups", "Mexican", "BBQ", "Cuban", "Bar Food", "Sports Bar", "Breakfast", "Mexican"};
-      private static final String TAG = RestaurantsActivity.class.getSimpleName();
+      private static final String TAG = RestaurantListActivity.class.getSimpleName();
       public ArrayList<Restaurant> restaurants = new ArrayList<>();
 
     @Override
@@ -51,7 +45,7 @@ public class RestaurantsActivity extends AppCompatActivity {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                String restaurant = ((TextView)view).getText().toString();
-//                Toast.makeText(RestaurantsActivity.this, restaurant, Toast.LENGTH_LONG).show();
+//                Toast.makeText(RestaurantListActivity.this, restaurant, Toast.LENGTH_LONG).show();
 //               // Log.v(TAG, "In the onItemClickListener!");
 //            }
 //        });
@@ -74,13 +68,13 @@ public class RestaurantsActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 restaurants = yelpService.processResults(response);
 
-                RestaurantsActivity.this.runOnUiThread(new Runnable() {
+                RestaurantListActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
                         mAdapter = new RestaurantListAdapter(getApplicationContext(), restaurants);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantsActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
 //                        String[] restaurantNames = new String[restaurants.size()];
@@ -88,7 +82,7 @@ public class RestaurantsActivity extends AppCompatActivity {
 //                            restaurantNames[i] = restaurants.get(i).getName();
 //                        }
 //
-//                        ArrayAdapter adapter = new ArrayAdapter(RestaurantsActivity.this,
+//                        ArrayAdapter adapter = new ArrayAdapter(RestaurantListActivity.this,
 //                                android.R.layout.simple_list_item_1, restaurantNames);
 //                        mListView.setAdapter(adapter);
 //
