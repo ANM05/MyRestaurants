@@ -1,4 +1,6 @@
-package com.example.myrestaurants;
+package com.example.myrestaurants.services;
+
+import com.example.myrestaurants.BuildConfig;
 
 public class Constants {
     public static final String YELP_TOKEN = BuildConfig.YELP_TOKEN;
